@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Spline */
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: auto;
+  transform: scale(1.15);
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 900;
+  background: linear-gradient(45deg,#00f,#ff00e6,#ff7700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: auto;
+}
+
+/* Hamburger (Uiverse) */
+.hamburger {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  height: 3em;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-width: 3;
+  transition: stroke-dasharray 600ms, stroke-dashoffset 600ms;
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  z-index: 4;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s ease;
+}
+
+#menuToggle:checked ~ .mobile-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu a {
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Sections */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  position: relative;
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+.hero p {
+  opacity: 0.8;
+}
+
+.section {
+  padding: 120px 60px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.section.dark {
+  background: rgba(0,0,0,0.6);
+}
+
+.cards, .portfolio {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card, .work {
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+}
